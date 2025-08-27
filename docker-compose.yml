@@ -1,50 +1,39 @@
-version: "3.9"
-
 services:
   db:
     image: postgres:15
-    container_name: postgres_db
     restart: always
     environment:
-      POSTGRES_DB: mydatabase
-      POSTGRES_USER: myuser
-      POSTGRES_PASSWORD: mypassword
+      POSTGRES_DB: depressao_db
+      POSTGRES_USER: depressao_user
+      POSTGRES_PASSWORD: depressao_pass
     volumes:
       - postgres_data:/var/lib/postgresql/data
-    ports:
-      - "5432:5432"
 
-  django:
-    build: ./django
-    container_name: django_app
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
     volumes:
       - ./django/src:/app
-      - django_static:/app/static
-      - django_media:/app/media
-    expose:
-      - "8000"
+      - media_volume:/app/media
+    ports:
+      - "8000:8000"
+    environment:
+      - DJANGO_SETTINGS_MODULE=core.settings
+      - DATABASE_URL=postgres://depressao_user:depressao_pass@db:5432/depressao_db
     depends_on:
       - db
-    environment:
-      DB_NAME: mydatabase
-      DB_USER: myuser
-      DB_PASSWORD: mypassword
-      DB_HOST: db
-      DB_PORT: 5432
 
   nginx:
-    image: nginx:latest
-    container_name: nginx_proxy
+    image: nginx:1.25
     ports:
       - "80:80"
     volumes:
-      - ./nginx/nginx.conf:/etc/nginx/conf.d/default.conf:ro
-      - django_static:/vol/static
-      - django_media:/vol/media
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+      - media_volume:/app/media
     depends_on:
-      - django
+      - web
 
 volumes:
-  django_static:
-  django_media:
   postgres_data:
+  media_volume:
