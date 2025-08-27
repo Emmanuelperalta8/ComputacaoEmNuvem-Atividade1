@@ -1,5 +1,74 @@
-<form method="post" enctype="multipart/form-data">
-  {% csrf_token %}
-  {{ form.as_p }}
-  <button type="submit">Enviar arquivo</button>
-</form>
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Upload de Arquivo</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <style>
+    body {
+      background: linear-gradient(120deg, #eaf1fe 0%, #f5f7fa 100%);
+      font-family: 'Segoe UI', Arial, sans-serif;
+      min-height: 100vh;
+      margin: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .upload-card {
+      background: #fff;
+      padding: 32px 28px;
+      border-radius: 16px;
+      box-shadow: 0 8px 32px rgba(79,140,255,0.18);
+      text-align: center;
+      width: 370px;
+    }
+    .upload-icon {
+      font-size: 48px;
+      color: #4f8cff;
+      margin-bottom: 12px;
+    }
+    .form-group {
+      margin-bottom: 18px;
+      text-align: left;
+    }
+    .form-group label {
+      font-weight: 500;
+      color: #2376e0;
+      margin-bottom: 6px;
+      display: block;
+    }
+    input[type="file"] {
+      display: block;
+      margin-top: 10px;
+      padding: 8px;
+      border-radius: 8px;
+      border: 1px solid #cfd8dc;
+      background: #eaf1fe;
+    }
+    button[type="submit"] {
+      background: #4f8cff;
+      color: #fff;
+      border: none;
+      padding: 10px 32px;
+      border-radius: 8px;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: background 0.2s;
+      margin-top: 18px;
+    }
+    button[type="submit"]:hover {
+      background: #2376e0;
+    }
+  </style>
+</head>
+<body>
+  <form method="post" enctype="multipart/form-data" class="upload-card">
+    <div class="upload-icon"><i class="fas fa-cloud-upload-alt"></i></div>
+    {% csrf_token %}
+    <div class="form-group">
+      {{ form.as_p }}
+    </div>
+    <button type="submit"><i class="fas fa-upload"></i> Enviar arquivo</button>
+  </form>
+</body>
+</html>

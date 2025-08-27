@@ -1,1 +1,60 @@
-<p>Arquivo enviado com sucesso: {{ filename }}</p>
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Sucesso no Upload</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <style>
+    body {
+      background: linear-gradient(120deg, #eaf1fe 0%, #f5f7fa 100%);
+      font-family: 'Segoe UI', Arial, sans-serif;
+      min-height: 100vh;
+      margin: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .success-card {
+      background: #fff;
+      padding: 32px 32px;
+      border-radius: 16px;
+      box-shadow: 0 8px 32px rgba(79,140,255,0.18);
+      text-align: center;
+      min-width: 340px;
+    }
+    .success-icon {
+      font-size: 48px;
+      color: #45bf55;
+      margin-bottom: 12px;
+    }
+    .filename {
+      color: #2376e0;
+      font-weight: 600;
+      margin-top: 10px;
+      word-break: break-all;
+    }
+    .btn-voltar {
+      background: #4f8cff;
+      color: #fff;
+      border: none;
+      padding: 10px 32px;
+      border-radius: 8px;
+      font-size: 1.1rem;
+      cursor: pointer;
+      margin-top: 24px;
+      transition: background 0.2s;
+    }
+    .btn-voltar:hover {
+      background: #2376e0;
+    }
+  </style>
+</head>
+<body>
+  <div class="success-card">
+    <div class="success-icon"><i class="fas fa-check-circle"></i></div>
+    <h2>Arquivo enviado com sucesso!</h2>
+    <div class="filename">{{ filename }}</div>
+    <a href="/upload/"><button class="btn-voltar"><i class="fas fa-arrow-left"></i> Fazer novo upload</button></a>
+  </div>
+</body>
+</html>
