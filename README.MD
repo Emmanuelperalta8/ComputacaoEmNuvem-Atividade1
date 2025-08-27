@@ -1,11 +1,11 @@
-# DepressaoEmNuvem-Atividade1
+# ComputaçãoEmNuvem-Atividade1
 
 Projeto Django containerizado com Docker, PostgreSQL e Nginx, para upload de arquivos e armazenamento persistente.
 
 ## Estrutura do Projeto
 
 ```
-DepressaoEmNuvem-Atividade1/
+ComputaçãoEmNuvem-Atividade1/
 ├── django
 │   └── src
 │       ├── core
@@ -30,7 +30,7 @@ DepressaoEmNuvem-Atividade1/
 
    ```sh
    git clone https://github.com/seu-usuario/seu-repo.git
-   cd DepressaoEmNuvem-Atividade1
+   cd ComputaçãoEmNuvem-Atividade1
    ```
 
 2. **Monte os containers**
