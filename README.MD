@@ -1,5 +1,8 @@
 # ComputacaoEmNuvem-Atividade1
 
+Alunos: Emmanuel Peralta e Lucas Casagrande
+
+
 Este projeto demonstra como criar uma aplicação Django conteinerizada, com upload de arquivos, Gunicorn, Nginx como proxy reverso e PostgreSQL como banco de dados. Os arquivos enviados são persistidos em um volume Docker para garantir durabilidade.
 
 ---
